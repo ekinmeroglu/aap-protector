@@ -53,6 +53,10 @@ class AnsibleAutomationPlatformProtector(dnf.Plugin):
 
         total = len(excluded_pkgs_query)
         logger.info(_('Reading AAP protector configuration'))
+
+        for pkg in excluded_pkgs_query:
+            logger.debug(_(f'--* Excluded PKG: {str(pkg)}'))
+
         self.base.sack.add_excludes(excluded_pkgs_query)
 
         logger.info(_(f'*** Excluded total: {total}'))
